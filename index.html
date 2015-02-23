@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="fancybox/jquery.fancybox.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="wrapper clearfix">
+    <h1>It's Britney...</h1>
+
+      <div class="container" id="container">
+      
+      <ul class="slider">
+
+        <li class="container1 clearfix">
+
+          <div class="images images1 clearfix">
+
+            <a href="images/youngbrit1.jpg" id="youngBrit1" data-index="0" class="brit">
+              <img src="images/youngbrit1.jpg" alt="britney spears younger days">
+            </a>
+
+            <a href="images/sexybrit1.jpg" id="sexyBrit1" data-index="1" class="brit">
+              <img src="images/sexybrit1.jpg" alt="sexy britney spears">
+            </a>          
+
+            <a href="images/britbroken1.jpg" id="brokenBrit1" class="brit">
+              <img src="images/britbroken1.jpg" alt="bald britney spears">
+            </a>
+
+            <a href="images/britdating1.jpg" id="datingBrit1" class="brit">
+              <img src="images/britdating1.jpg" alt="dating britney spears">
+            </a>
+
+          </div> <!-- images1 end -->
+        </li> <!-- container1 end -->
+
+        <li class="container2 clearfix">
+
+          <div class="images images2 clearfix">
+
+            <a href="images/youngbrit2.jpeg" id="youngBrit2" class="brit">
+              <img src="images/youngbrit2small.jpeg" alt="britney spears younger days">
+            </a>
+
+            <a href="images/sexybrit2.jpg" id="sexyBrit2" class="brit">
+              <img src="images/sexybrit2small.jpg" alt="Sexy britney spears">
+            </a>
+
+            <a href="images/britbroken2.jpg" id="brokenBrit2" class="brit">
+              <img src="images/britbroken2small.jpg" alt="bald britney spears">
+            </a>
+
+            <a href="images/britdating2.jpg" id="datingBrit2" class="brit">
+              <img src="images/britdating2small.jpg" alt="dating britney spears">
+            </a>
+
+          </div> <!-- image2 end -->
+       </li> <!-- container2 end -->
+
+       <li class="container3 clearfix">
+          <div class="images images3 clearfix">
+            
+            <a href="images/youngbrit3.jpg" id="youngBrit3" class="brit">
+              <img src="images/youngbrit3small.jpg" alt="britney spears younger days">    
+            </a>
+
+            <a href="images/sexybrit3.jpeg" id="sexyBrit3" class="brit">
+              <img src="images/sexybrit3small.jpeg" alt="sexy britney spears">
+            </a>
+
+            <a href="images/britbroken3.jpg" id="brokenBrit3" class="brit">
+              <img src="images/britbroken3small.jpg" alt="bald britney spears">
+            </a>
+         
+            <a href="images/britdating3.jpg" id="datingBrit3" class="brit">
+              <img src="images/britdating3small.jpg" alt="dating britney spears">
+            </a>
+
+          </div> <!-- images3 end -->
+        </li> <!-- container3 end -->
+
+        <li class="container4" clearfix> 
+          <div class="images images4 clearfix">
+            
+            <a href="images/youngbrit4.jpg" id="youngBrit4" class="brit">
+              <img src="images/youngbrit4small.jpg" alt="britney spears younger days">
+            </a>
+
+            <a href="images/sexybrit4.jpg" id="sexyBrit4" class="brit">
+              <img src="images/sexybrit4small.jpg" alt="sexy britney spears">
+            </a>
+
+            <a href="images/britbroken4.jpg" id="brokenBrit4" class="brit">
+              <img src="images/britbroken4small.jpg" alt="bald britney spears">
+            </a>
+
+            <a href="images/britdating4.jpeg" id="datingBrit4" class="brit">
+              <img src="images/britdating4small.jpeg" alt="dating britney spears">
+            </a>
+
+          </div> <!-- images4 end -->
+        </li> <!-- container4 end -->
+      </ul> 
+    </div> <!-- end Wrapper -->
+
+
+      <div class="containerNav">
+        <a href="#" class="nextPhase"><button type="button">SWITCH!</button></a>
+
+      </div>
+      <!-- containerNav end -->
+      </div>
+      <!-- wrapper end -->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="fancybox/jquery.fancybox.js?v=2.1.4"></script>
+
+    <script>
+    $(function() {
+      $('.brit').fancybox();
+        
+      var shift = 0;
+      var iteration = 0;
+
+      $("a.nextPhase").on("click", function(){
+        iteration++;
+        shift -= 90;
+        var next = iteration + 1;
+        var toShow = $('[data-index=' + iteration+']');
+        $(".images").css("transform","rotate(" + shift % 129600 + "deg)");
+        if ( iteration < 4) {
+          var select = $('.images a:nth-child(' + next + ')');
+          select.css('z-index', iteration + 1);
+          select.prev().css('z-index', '0');
+        } else {
+          $('.images a').css('z-index', '0');
+          $('.images a:first-child').css('z-index', '4');
+          iteration = 0;
+        }
+      });
+
+
+  });
+
+
+
+  </script>
+
+
+
+
+
+</body>
+</html>
